@@ -11,6 +11,8 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
   // Lấy tham số từ URL
   const searchQuery = searchParams.get('search') || '';
@@ -19,7 +21,7 @@ const ProductsPage = () => {
 
   // Lấy danh mục từ API
   useEffect(() => {
-    axios.get('http://localhost:8000/api/categories')
+    axios.get(`${API_BASE_URL}/api/categories`)
       .then(res => setCategories(res.data.data))
       .catch(err => console.error(err));
   }, []);
@@ -27,7 +29,7 @@ const ProductsPage = () => {
   // Lấy sản phẩm với params lọc
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:8000/api/products', {
+    axios.get(`${API_BASE_URL}/api/products`, {
       params: {
         search: searchQuery,
         category: categoryFilter,

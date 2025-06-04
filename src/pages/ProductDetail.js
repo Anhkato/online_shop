@@ -16,11 +16,13 @@ const ProductDetail = () => {
   const [addedToCart, setAddedToCart] = useState(false);
   const [commentSubmitting, setCommentSubmitting] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/products/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/api/products/${id}`);
         setProduct(res.data.data);
         setComments(res.data.data.comments || []);
         setRelatedProducts(res.data.related || []);

@@ -2,13 +2,14 @@
   import { Container, Row, Col, Card, Button, Spinner } from 'react-bootstrap';
   import axios from 'axios';
   import { Link } from 'react-router-dom';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      axios.get('https://du-an-tot-nghiep-main-qc5xa9.laravel.cloud/products')
+      axios.get(`${API_BASE_URL}/api/products`)
         .then(response => {
           setProducts(response.data.data); // danh sách sản phẩm từ Laravel
           setLoading(false);

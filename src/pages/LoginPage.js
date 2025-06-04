@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth(); // Lấy hàm login từ context
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -21,8 +22,8 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      await axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true });
-      const res = await axios.post('http://localhost:8000/api/login', form, {
+      await axios.get(`${API_BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
+      const res = await axios.post(`${API_BASE_URL}/api/login`, form, {
         withCredentials: true,
       });
       // Gọi login để lưu token và user
