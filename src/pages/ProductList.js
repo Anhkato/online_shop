@@ -8,7 +8,7 @@
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      axios.get('https://du-an-tot-nghiep-main-qc5xa9.laravel.cloud/products')
+      axios.get('https://du-an-tot-nghiep-main-qc5xa9.laravel.cloud/api/products')
         .then(response => {
           setProducts(response.data.data); // danh sách sản phẩm từ Laravel
           setLoading(false);
