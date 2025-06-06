@@ -47,7 +47,7 @@
                     <Link to={`/products/${product.id}`}>
                       <Card.Img
                         variant="top"
-                        src={product.img}
+                        src={`${API_BASE_URL}/storage` + product.thumbnail}
                         style={{ height: '200px', objectFit: 'cover', cursor: 'pointer' }}
                         alt={product.name}
                       />
