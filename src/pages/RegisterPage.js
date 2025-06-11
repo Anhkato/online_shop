@@ -21,8 +21,6 @@ const RegisterPage = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -33,7 +31,7 @@ const RegisterPage = () => {
     setSuccess('');
 
     try {
-      await axios.post(`${API_BASE_URL}/api/register`, form);
+      await axios.post('http://localhost:8000/api/register', form);
       setSuccess('Đăng ký thành công. Vui lòng kiểm tra email để xác nhận.');
       Navigate('/login');
     } catch (err) {

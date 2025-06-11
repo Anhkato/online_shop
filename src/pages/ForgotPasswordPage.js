@@ -7,8 +7,6 @@ const ForgotPasswordPage = () => {
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +14,7 @@ const ForgotPasswordPage = () => {
     setSuccess('');
     setLoading(true);
     try {
-      await axios.post(`${API_BASE_URL}/api/forgot-password`, { email });
+      await axios.post('http://localhost:8000/api/forgot-password', { email });
       setSuccess('Chúng tôi đã gửi email hướng dẫn đặt lại mật khẩu.');
       setEmail('');
     } catch (err) {
