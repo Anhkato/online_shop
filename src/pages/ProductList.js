@@ -54,10 +54,6 @@ const ProductList = () => {
                     </Link>
                   </Card.Title>
 
-                  {/* Giá sản phẩm */}
-                  // <Card.Text className="text-danger fw-bold">
-                  //   {product.price.toLocaleString()} đ
-                  // </Card.Text>
 
                   {/* Nút mua */}
                   <Button variant="primary" size="sm" className="w-100">
